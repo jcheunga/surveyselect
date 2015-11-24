@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import styles from '../less/main.less';
 
 export default class SingleElement extends Component {
 	static propTypes = {
@@ -24,11 +23,27 @@ export default class SingleElement extends Component {
 
 	render() {
 		const { elValue, value, highlightColor } = this.props;
+		const styles = {
+			display:"inline-block", 
+			height: "30px", width: "30px", 
+			marginBottom: "5px", 
+			borderStyle: "solid", 
+			borderWidth: "1px", 
+			borderColor: "black"
+		};
+
+		const highl = {
+			backgroundColor: highlightColor
+		};
+		 
+		const white = {
+			backgroundColor: "#ffffff"
+		};
+		const highc = Object.assign({}, styles, highl);
+		const whitec = Object.assign({}, styles, white);
 		return (
 			<a href="#" onClick={this._handleClick} onMouseOver={this._handleMouseEnter} onMouseOut={this._handleMouseLeave}>
-			<div style={ elValue <= value ?
-				{ display:"inline-block", height: "30px", width: "30px", marginBottom: "5px", borderStyle: "solid", borderWidth: "1px", borderColor: "black", backgroundColor: highlightColor } :
-				{ display:"inline-block", height: "30px", width: "30px", marginBottom: "5px", borderStyle: "solid", borderWidth: "1px", borderColor: "black", backgroundColor: "#ffffff" }}>
+			<div style={ elValue <= value ? highc : whitec}>
 			</div>
 			</a>
 		);
